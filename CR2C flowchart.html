@@ -1,0 +1,81 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+  <script>
+	var callback = function(){
+		alert('A callback was triggered');
+	}
+	var config = {
+		startOnLoad:true,
+		flowchart:{
+			useMaxWidth:true,
+			htmlLabels:true,
+			curve:'cardinal',
+		},
+		securityLevel:'loose',
+	};
+
+	mermaid.initialize(config);
+  </script>
+
+    <p>Trying to prepare a flow chart for CR2C training. </p>
+    <p><em> May 24, 2021 by Yulun Wu </em></p>
+
+    <div class="mermaid">
+    graph LR
+    C((CR2C Training)) --- YW((Yulun Wu)) --- Mermaid
+    Manhole[(Manhole)] ==> P100([P100]) & P101([P101])
+    P100 & P101 ==> FT200
+    FT200 ==> AV100 ==> T200[(T200)]
+    T200 ==> MS200[(MS200)] ==> FT201 
+    FT201 ==> T201[(T201)]
+    LT200 --- T200 --> AV204 & P200([P200])  
+    T201 --- LT201
+    T201 ==> P201([P201]) & P204([P204])
+    P204 --> FT203
+    P200 --> FT206
+    P201 ==> FT202 ==> AV300
+    AV300 ==> S[/SAFMBR\]
+    LW[/LakeWater\] -.-> FT205
+    LW -.-> FT204 -.-> AV200 & AV207 & AV206
+    AV206 -.-> heater -.-> MS200
+    AV207 -.-> MS200
+    AV200 -.-> D[/Discharge\]
+    FT205 -.-> L[/LiquidPilot\]
+    FT203 & FT206 ---> L[/LiquidPilot\]
+    AV204 & MS200 & T201 ---> D[/Discharge\]
+
+    click C "https://cr2c.stanford.edu/" "test link" _blank
+    click YW "file:///C:/Users/Y.Wu/OneDrive/CR2C/pop.txt" _blank
+    click Mermaid "https://mermaid-js.github.io/mermaid/#/flowchart" _blank
+
+    style C stroke:#333,stroke-width:7px
+    </div>
+
+SAFMBR
+
+    <div class="mermaid">
+    graph LR
+    AV300 --> R300[(R300)]
+    R300 ==> FT300
+    FT300 ==> AV301 ==> R301[(R301)]
+    FT300 ==> AV303 ==> R302[(R302)]
+    R301 --> P308 --> FT419 --> R300
+    R302 --> P309 --> FT417 --> R300
+    R302 ==> P307 ==> L[/LiquidPilot\]
+    R301 ==> P306 ==> L
+    R300 -.- R301 -...- R302 -.-> flare
+    R302 -.-> B801 -.-> R301
+    R302 --> P305 --> FT303 --> R302
+    R300 --> P303 --> FT301 --> R300
+    R300 ---- FT704
+    R301 ---- LIT301
+    R302 ---- FT700
+	
+	
+	click AV300 callback "Tooltip for a callback"
+    </div>
+
+  </body>
+</html>
